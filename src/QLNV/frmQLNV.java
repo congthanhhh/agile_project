@@ -771,7 +771,11 @@ public class frmQLNV extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-         try {
+        int ret = JOptionPane.showConfirmDialog(this,"Do you want to update?","Confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+       if(ret==JOptionPane.NO_OPTION){
+           return;
+       } 
+        try {
             String sql = "update Employees set hoten=?,email=?,luong=?,sdt=?,gioitinh=?,hinh=?"+" where manv = ?";
             Connection con = DatabaseHeper.openConnection();
             PreparedStatement ps = con.prepareStatement(sql);
@@ -799,7 +803,11 @@ public class frmQLNV extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-         try {
+       int ret = JOptionPane.showConfirmDialog(this,"Do you want to delete?","Confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+       if(ret==JOptionPane.NO_OPTION){
+           return;
+       }
+        try {
             String sql = "delete from Employees where manv=?";
             Connection con = DatabaseHeper.openConnection();
             PreparedStatement ps = con.prepareStatement(sql);
