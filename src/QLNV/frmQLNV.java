@@ -4,6 +4,7 @@
  */
 package QLNV;
 
+import java.awt.Color;
 import java.awt.Image;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
@@ -566,6 +567,61 @@ public class frmQLNV extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        StringBuilder sb = new StringBuilder();
+        if(txtmanv.getText().equals("")){
+            sb.append("Bạn chưa nhập manv");
+            txtmanv.setBackground(Color.yellow);
+        }else{
+            txtmanv.setBackground(Color.white);
+        }
+        if(txtHoten.getText().equals("")){
+            sb.append("Bạn chưa nhập họ tên");
+            txtHoten.setBackground(Color.yellow);
+        }else{
+            txtHoten.setBackground(Color.white);
+        }
+        if(txtEmail.getText().equals("")){
+            sb.append("Bạn chưa nhập email");
+            txtEmail.setBackground(Color.yellow);
+        }else{
+            txtEmail.setBackground(Color.white);
+        }
+        if(txtSdt.getText().equals("")){
+            sb.append("Bạn chưa nhập sđt");
+            txtSdt.setBackground(Color.yellow);
+        }else{
+            txtSdt.setBackground(Color.white);
+        }
+        if(txtLuong.getText().equals("")){
+            sb.append("Bạn chưa nhập lương");
+            txtLuong.setBackground(Color.yellow);
+        }else{
+            txtLuong.setBackground(Color.white);
+        }
+        try {
+            int std = Integer.parseInt(txtSdt.getText());
+        } catch (Exception e) {
+            sb.append("Sđt phải là số");
+            txtSdt.setBackground(Color.yellow);
+            txtSdt.requestFocus();
+            
+        }
+        try {
+            int luong = Integer.parseInt(txtLuong.getText());
+        } catch (Exception e) {
+            sb.append("Lương phải là số");
+            txtLuong.setBackground(Color.yellow);
+            txtLuong.requestFocus();
+        }
+        if(!(rdoMale.isSelected() || rdoFemale.isSelected())) {
+            sb.append("Bạn chưa chọn giới tính");
+        }
+        
+        if(sb.length()>0) {
+            JOptionPane.showMessageDialog(this,sb.toString());
+            return;
+        }
+        
         try {
             String sql = "insert into Employees values(?,?,?,?,?,?,?)";
             Connection con = DatabaseHeper.openConnection();
@@ -649,6 +705,10 @@ public class frmQLNV extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOpenActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        int ret = JOptionPane.showConfirmDialog(this,"Do you want to exit?","Confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+       if(ret==JOptionPane.NO_OPTION){
+           return;
+       }
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
@@ -771,6 +831,17 @@ public class frmQLNV extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+       StringBuilder sb = new StringBuilder();
+        if(txtmanv.getText().equals("")){
+            sb.append("Bạn chưa nhập manv");
+            txtmanv.setBackground(Color.yellow);
+        }else{
+            txtmanv.setBackground(Color.white);
+        }
+        if(sb.length()>0) {
+            JOptionPane.showMessageDialog(this,sb.toString());
+            return;
+        }
         int ret = JOptionPane.showConfirmDialog(this,"Do you want to update?","Confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
        if(ret==JOptionPane.NO_OPTION){
            return;
@@ -803,7 +874,18 @@ public class frmQLNV extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-       int ret = JOptionPane.showConfirmDialog(this,"Do you want to delete?","Confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        StringBuilder sb = new StringBuilder();
+        if(txtmanv.getText().equals("")){
+            sb.append("Bạn chưa nhập manv");
+            txtmanv.setBackground(Color.yellow);
+        }else{
+            txtmanv.setBackground(Color.white);
+        }
+        if(sb.length()>0) {
+            JOptionPane.showMessageDialog(this,sb.toString());
+            return;
+        }
+        int ret = JOptionPane.showConfirmDialog(this,"Do you want to delete?","Confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
        if(ret==JOptionPane.NO_OPTION){
            return;
        }
