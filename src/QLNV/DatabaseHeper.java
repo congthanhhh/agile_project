@@ -20,7 +20,5 @@ public class DatabaseHeper {
         String pass = "123456";
         Connection con = DriverManager.getConnection(connectionUrl, user, pass);
         return con;
-        
-        
     }
 }
