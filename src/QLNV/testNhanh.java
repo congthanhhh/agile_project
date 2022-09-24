@@ -11,5 +11,6 @@ package QLNV;
 public class testNhanh {
     public static void main(String[] args) {
         System.out.println("Hello branch alpha!");
+        System.err.println("Chao lan 2 nhanh alpha!");
     }
 }
